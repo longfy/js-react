@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+    <input type="text" id="input">
+    <p id="error">字数不能超过5个字</p>
+    <button id=btn>清除提示</button>
+    <script>
+        let input = document.getElementById('input');
+        let errorMsg = document.getElementById('error');
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click', function () {
+            setState({
+                error: false
+            })
+        })
+        let state = {
+            value: "",
+            error: false
+        }
+        let setState = function (newState) {
+            state = {
+                ...state,
+                ...newState
+            }
+            render()
+        }
+        let render = function () {
+            input.value = state.value
+            if (state.error) {
+                errorMsg.style.display = 'block';
+            } else {
+                errorMsg.style.display = 'none'
+            }
+        }
+        let handleInput = function (value) {
+            if (value.length <= 5) {
+                setState({
+                    value: value,
+                    error: false
+                })
+            } else {
+                setState({
+                    error: true
+                })
+            }
+        }
+        input.addEventListener('input', function () {
+            handleInput(this.value)
+            setState({
+                value: this.value
+            })
+        })
+        render();
+    </script>
+</body>
+
+</html>

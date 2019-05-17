@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <button id="like">喜欢</button>
+    <script>
+        var likeBtn = document.getElementById('like')
+        likeBtn.addEventListener('click', function () {
+            if (likeBtn.innerHTML == '已赞') {
+                likeBtn.innerHTML = '喜欢'
+                likeBtn.style.color = 'red';
+            } else {
+                likeBtn.innerHTML = '已赞'
+                likeBtn.style.color = 'blue';
+            }
+        })
+    </script>
+</body>
+
+</html>
